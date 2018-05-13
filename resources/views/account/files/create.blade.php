@@ -7,6 +7,10 @@
         {{ csrf_field() }}
 
         <div class="field">
+          <div id="file" class="dropzone"></div>
+        </div>
+
+        <div class="field">
             <div id="file" class="dropzone"></div>
             @if ($errors->has('uploads'))
                 <p class="help is-danger">{{ $errors->first('uploads') }}</p>
@@ -60,4 +64,12 @@
             <p>We'll review your file before it goes live.</p>
         </div>
     </form>
+@endsection
+
+@section('scripts')
+  <script>
+    var drop = new Dropzone('#file', {
+      url: '/'
+    })
+  </script>
 @endsection

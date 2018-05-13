@@ -50,3 +50,10 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/**
+  * Dropzone
+ */
+
+ window.Dropzone = require('dropzone')
+ Dropzone.autoDiscover = false
