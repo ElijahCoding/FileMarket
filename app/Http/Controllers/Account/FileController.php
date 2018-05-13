@@ -46,7 +46,10 @@ class FileController extends Controller
 
      public function edit(File $file)
      {
-       return view('account.files.edit', compact('file'));
+       return view('account.files.edit', [
+         'file' => $file,
+         'approval' => $file->approvals->first()
+       ]);
      }
 
      public function update(File $file, UpdateFileRequest $request)
