@@ -43,6 +43,11 @@ class FileController extends Controller
             ->withSuccess('Thanks, submitted for review.');
      }
 
+     public function edit(File $file)
+     {
+       return view('account.files.edit', compact('file'));
+     }
+
     protected function createAndReturnSkeletonFile()
     {
         return auth()->user()->files()->create([
