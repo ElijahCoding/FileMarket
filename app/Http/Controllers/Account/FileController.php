@@ -56,7 +56,9 @@ class FileController extends Controller
        $approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
 
        if ($file->needsApproval($approvalProperties)) {
-         return;
+         $file->createApproval($approvalProperties);
+
+         return back()->withSuccess('Thanks! We will review your changes soon.');
        }
 
        $file->update([
