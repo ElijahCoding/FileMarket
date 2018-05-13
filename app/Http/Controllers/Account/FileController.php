@@ -9,6 +9,13 @@ use App\Http\Requests\File\StoreFileRequest;
 
 class FileController extends Controller
 {
+    public function index()
+    {
+      $files = auth()->user()->files()->latest()->finished()->get();
+
+      return view('account.files.index', compact('files'));
+    }
+
     public function create(File $file)
     {
       if (!$file->exists) {

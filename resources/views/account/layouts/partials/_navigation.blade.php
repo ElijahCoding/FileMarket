@@ -3,7 +3,7 @@
 
   <ul class="menu-list">
     <li>
-      <a href="#">Your files</a>
+      <a href="{{ route('account.files.index') }}">Your files</a>
     </li>
 
     <li>
