@@ -39,7 +39,8 @@ class FileController extends Controller
        $file->finished = true;
        $file->save();
 
-       return back();
+       return redirect()->route('account.files.index')
+            ->withSuccess('Thanks, submitted for review.');
      }
 
     protected function createAndReturnSkeletonFile()
