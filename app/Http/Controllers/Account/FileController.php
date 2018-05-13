@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account;
 use App\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\File\StoreFileRequest;
 
 class FileController extends Controller
 {
@@ -22,6 +23,17 @@ class FileController extends Controller
             'file' => $file
         ]);
     }
+
+    public function store(File $file, StoreFileRequest $request)
+    {
+      $this->authorize('touch', $file);
+
+       $file->fill($request->only(['title', 'overview', 'overview_short', 'price']));
+       $file->finished = true;
+       $file->save();
+
+       return back();
+     }
 
     protected function createAndReturnSkeletonFile()
     {
