@@ -68,8 +68,13 @@
 
 @section('scripts')
   <script>
-    var drop = new Dropzone('#file', {
-      url: '/'
+    let drop = new Dropzone('#file', {
+      createImageThumbnails: false,
+       addRemoveLinks: true,
+      url: '/',
+      headers: {
+        'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
+      }
     })
   </script>
 @endsection
