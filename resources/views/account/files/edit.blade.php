@@ -11,7 +11,16 @@
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
 
-        {{-- <input type="hidden" name="live" value="false"> --}}
+        <input type="hidden" name="live" value="false">
+        
+        <input type="hidden" name="uploads" value="{{ $file->id }}">
+
+        <div class="field">
+            <div id="file" class="dropzone"></div>
+            @if ($errors->has('uploads'))
+                <p class="help is-danger">{{ $errors->first('uploads') }}</p>
+            @endif
+        </div>
 
         <div class="field">
             <p class="control">
@@ -69,4 +78,8 @@
             <p>Your file changes may be subject to review.</p>
         </div>
     </form>
+@endsection
+
+@section('scripts')
+  @include('files.partials._file_upload_js')
 @endsection
