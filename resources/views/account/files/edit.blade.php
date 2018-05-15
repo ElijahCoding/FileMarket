@@ -11,7 +11,7 @@
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
 
-        <input type="hidden" name="live" value="false">
+        {{-- <input type="hidden" name="live" value="false"> --}}
 
         <div class="field">
             <p class="control">
