@@ -18,7 +18,7 @@ Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => '
   });
 });
 
-Route::group(['prefix' => '/admin', 'namespace' => 'Admin'], function() {
+Route::group(['prefix' => '/admin', 'middleware' => ['admin', 'auth'], 'namespace' => 'Admin'], function() {
   Route::get('/', 'AdminController@index')->name('admin.index');
 });
 
