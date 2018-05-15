@@ -39,7 +39,7 @@ class UploadController extends Controller
     {
       $this->authorize('touch', $file);
 
-      
+      $upload->delete();
     }
 
     protected function storeUpload(File $file, UploadedFile $uploadedFile)

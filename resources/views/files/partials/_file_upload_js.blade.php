@@ -12,7 +12,7 @@
     file.id = response.id
   });
 
-  drop.on('removedFile', function (file) {
-    console.log(file)
+  drop.on('removedfile', function (file) {
+    axios.delete('/{{ $file->identifier }}/upload/' + file.id)
   })
 </script>
