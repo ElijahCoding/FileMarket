@@ -6,9 +6,7 @@
     <form action="{{ route('account.files.store', [$file]) }}" method="post" class="form">
         {{ csrf_field() }}
 
-        <div class="field">
-          <div id="file" class="dropzone"></div>
-        </div>
+        <input type="hidden" name="uploads" value="{{ $file->id }}">
 
         <div class="field">
             <div id="file" class="dropzone"></div>
