@@ -13,6 +13,12 @@
   });
 
   drop.on('removedfile', function (file) {
-    axios.delete('/{{ $file->identifier }}/upload/' + file.id)
-  })
+    axios.delete('/{{ $file->identifier }}/upload/' + file.id).catch(function (error) {
+      drop.emit('addedFile', {
+        id: file.id,
+        name: file.name,
+        size: file.size
+      })
+    });
+  });
 </script>
