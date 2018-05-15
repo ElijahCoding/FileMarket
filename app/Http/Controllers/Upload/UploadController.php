@@ -40,7 +40,7 @@ class UploadController extends Controller
       $upload = new Upload;
 
       $upload->fill([
-        'filename' => 'text.png',
+        'filename' => $this->generateFilename($uploadedFile),
         'size' => $uploadedFile->getSize()
       ]);
 
@@ -50,5 +50,10 @@ class UploadController extends Controller
       $upload->save();
 
       return $upload;
+    }
+
+    protected function generateFilename(UploadedFile $uploadedFile)
+    {
+      return $uploadedFile->getClientOriginalName();
     }
 }
