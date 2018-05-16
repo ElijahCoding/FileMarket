@@ -17,8 +17,14 @@ class FileUpdatedController extends Controller
       ]);
     }
 
-    public function update()
+    public function update(File $file)
     {
+      $file->mergeApprovalProperties();
 
+      $file->approveAllUploads();
+
+      $file->deleteAllApprovals();
+      
+      return back()->withSuccess("{$file->title} has been approved");
     }
 }
