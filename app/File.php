@@ -46,6 +46,27 @@ class File extends Model
         return 'identifier';
     }
 
+    public function approve()
+    {
+      $this->updateToBeVisible();
+      $this->approveAllUploads();
+    }
+
+    public function approveAllUploads()
+    {
+      $this->uploads()->update([
+        'approved' => true
+      ]);
+    }
+
+    public function updateToBeVisible()
+    {
+      $this->update([
+        'live' => true,
+        'approved' => true
+      ]);
+    }
+
     public function isFree()
     {
       return $this->price == 0;

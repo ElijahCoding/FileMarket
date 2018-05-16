@@ -24,6 +24,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['admin', 'auth'], 'namespac
   Route::group(['prefix' => '/files'], function() {
     Route::group(['prefix' => '/new'], function() {
       Route::get('/', 'FileNewController@index')->name('admin.files.new.index');
+      Route::patch('/{file}', 'FileNewController@update')->name('admin.files.new.update');
     });
   });
 });
