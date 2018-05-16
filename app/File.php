@@ -69,6 +69,11 @@ class File extends Model
       ]);
     }
 
+    public function deleteUnapprovedUploads()
+    {
+      $this->uploads()->unapproved()->delete();
+    }
+
     public function updateToBeVisible()
     {
       $this->update([
