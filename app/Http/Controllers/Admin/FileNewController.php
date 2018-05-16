@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Mail;
 use App\File;
 use Illuminate\Http\Request;
+use App\Mail\Files\FileApproved;
 use App\Http\Controllers\Controller;
 
 class FileNewController extends Controller
@@ -20,6 +22,8 @@ class FileNewController extends Controller
     public function update(File $file)
     {
       $file->approve();
+
+      Mail::to($file->user)->send(new FileApproved($file));
 
       return back()->withSuccess("{$file->title} has been approved");
     }
