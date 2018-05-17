@@ -33,11 +33,12 @@ Route::group(['prefix' => '/admin', 'middleware' => ['admin', 'auth'], 'namespac
       Route::get('/', 'FileUpdatedController@index')->name('admin.files.updated.index');
       Route::patch('/{file}', 'FileUpdatedController@update')->name('admin.files.updated.update');
       Route::delete('/{file}', 'FileUpdatedController@destroy')->name('admin.files.updated.destroy');
-
     });
-
-
   });
+});
+
+Route::group(['prefix' => '/{file}/checkout', 'namespace' => 'Checkout'], function() {
+  Route::post('/free', 'CheckoutController@free')->name('checkout.free');
 });
 
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');
