@@ -22,10 +22,10 @@ class FileApproved extends Mailable
      *
      * @return void
      */
-    public function __construct(File $file, User $user)
+    public function __construct(File $file)
     {
         $this->file = $file;
-        $this->user = $user;
+        $this->user = $file->user;
     }
 
     /**
@@ -36,6 +36,6 @@ class FileApproved extends Mailable
     public function build()
     {
         return $this->subject('Your file has been approved')
-                    ->view('view.name');
+                    ->view('emails.files.new.approved');
     }
 }
