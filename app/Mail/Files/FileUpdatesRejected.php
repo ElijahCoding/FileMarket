@@ -2,13 +2,12 @@
 
 namespace App\Mail\Files;
 
-use App\File;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class FileApproved extends Mailable
+class FileUpdatesRejected extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +33,7 @@ class FileApproved extends Mailable
      */
     public function build()
     {
-        return $this->subject('Your file has been approved')
-                    ->view('emails.files.new.approved');
+      return $this->subject('Your file updates have been rejected')
+                  ->view('emails.files.updated.rejected');
     }
 }
