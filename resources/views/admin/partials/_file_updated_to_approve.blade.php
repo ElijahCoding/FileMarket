@@ -3,7 +3,7 @@
     <div class="level">
       <div class="level-left">
         <p class="level-item">
-          <a href="#">Preview Changes</a>
+          <a href="{{ route('admin.files.show', $file) }}">Preview Changes</a>
         </p>
 
         <p class="level-item">
