@@ -27,7 +27,12 @@
             <p>{{ $file->overview }}</p>
           </div>
 
-          <div class="column">50%</div>
+          <div class="column">
+            <h1 class="title">What you get</h1>
+            @foreach ($uploads as $upload)
+              <p>{{ $upload->filename }}</p>
+            @endforeach
+          </div>
         </div>
       </div>
     </div>
