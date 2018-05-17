@@ -13,6 +13,10 @@
         <h2 class="subtitle">
           {{ $file->overview_short }}
         </h2>
+
+        @if ($file->isFree())
+          @include('files.partials._checkout_form_free')
+        @endif
       </div>
     </div>
   </section>
