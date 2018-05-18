@@ -123,6 +123,11 @@ class File extends Model
         return array_only($this->toArray(), self::APPROVAL_PROPERTIES) != $properties;
     }
 
+    public function calculateCommission()
+    {
+      return (config('filemarket.sales.commission') / 100) * $this->price;
+    }
+
     public function uploads()
     {
       return $this->hasMany(Upload::class);
