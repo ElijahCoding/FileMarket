@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Sale;
 use App\Traits\HasApprovals;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -126,6 +127,11 @@ class File extends Model
     public function calculateCommission()
     {
       return (config('filemarket.sales.commission') / 100) * $this->price;
+    }
+
+    public function matchesSale(Sale $sale)
+    {
+      return $this->sales->contains($sale);
     }
 
     public function uploads()

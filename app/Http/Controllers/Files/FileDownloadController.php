@@ -11,6 +11,12 @@ class FileDownloadController extends Controller
 {
   public function show(File $file, Sale $sale)
   {
+    if (!$file->visible()) {
+      return abort(403);
+    }
 
+    if (!$file->matchesSale($sale)) {
+      return abort(403);
+    }
   }
 }
