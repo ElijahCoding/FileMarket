@@ -46,3 +46,5 @@ Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->nam
 
 
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
+
+Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');
